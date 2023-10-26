@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Quicksand", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.game {
+  background-color: #f1f1f1;
+  border: 2px solid #333;
+  padding: 23px;
+  text-align: center;
+  width: 500px;
+  margin: 0 auto;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h3 {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  margin: 0;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  text-align: center;
+}
+#header {
+  text-align: center;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+.humanvscomp {
+  display: flex;
+  margin: 10px 0;
+}
+
+.human,
+.computer {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  width: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.human-name,
+.computer-name {
+  font-weight: bold;
+}
+
+.result p {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  margin: 10px 0;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.result p {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  margin: 10px 0;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.all-button button {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  font-size: 15px;
+  margin: 7px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.all-button button:hover {
+  background-color: #555;
+}
