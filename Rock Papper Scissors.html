@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RPS</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
   </head>
 
   <body>
@@ -15,49 +16,101 @@
       <h3>Score</h3>
       <div class="humanvscomp">
         <div class="human">
-          <h4 class="1">0</h4>
+          <span id="userScore">0</span>
+          <p class="human-name" style="margin-top: 10px;">User</p>
           <br />
-          <p class="human-name">User</p>
-          <br />
-          <p class="input">Paper</p>
+          <p class="input" style="margin-top: -10px;">....</p>
         </div>
         <div class="computer">
-          <h4 class="2">0</h4>
+          <span id="computerScore">0</span>
+          <p class="computer-name" style="margin-top: 10px;">Computer</p>
           <br />
-          <p class="computer-name">Computer</p>
-          <br />
-          <p class="output">Paper</p>
+          <p class="output" style="margin-top: -10px;">....</p>
         </div>
       </div>
-
-      <div class="result">
-        <p>You Lose </p>
-      </div>
+      <div class="won" id="result"></div>
       <div class="all-button">
-        <button>
-          Rock
-        </button>
-        <button>
-          Paper
-        </button>
-        <button>
-          Scissor
-        </button>
-        <button>
-          Reset
-        </button>
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+        <button id="reset">Reset</button>
       </div>
     </div>
-    <script src="script.js"></script>
+
     <script>
-      var button = document.querySelector("#submit-button");
-      button.addEventListener("click", function () {
-        var input = document.querySelector("#input-field");
-        var result = main(input.value);
-        var output = document.querySelector("#output-div");
-        output.innerHTML = result;
-        input.value = "";
+      let userScore = 0;
+      let computerScore = 0;
+      const userScoreSpan = document.getElementById("userScore");
+      const computerScoreSpan = document.getElementById("computerScore");
+      const buttons = document.querySelectorAll("button");
+      const resultDiv = document.getElementById("result");
+
+      buttons.forEach((button) => {
+        if (button.id !== "reset") {
+          button.addEventListener("click", () => {
+            const userChoice = button.id;
+            const computerChoice = getComputerChoice();
+            const result = determineWinner(userChoice, computerChoice);
+            displayResult(result, userChoice, computerChoice);
+            updateUserChoiceDisplay(userChoice); // Update the user's choice in the input element
+          });
+        }
       });
+
+      document.getElementById("reset").addEventListener("click", () => {
+        userScore = 0;
+        computerScore = 0;
+        userScoreSpan.textContent = "0";
+        computerScoreSpan.textContent = "0";
+        resultDiv.textContent = "";
+      });
+
+      function getComputerChoice() {
+        const choices = ["rock", "paper", "scissors"];
+        const randomIndex = Math.floor(Math.random() * 3);
+        return choices[randomIndex];
+      }
+
+      function determineWinner(userChoice, computerChoice) {
+        if (userChoice === computerChoice) {
+          return "It's a draw!";
+        } else if (
+          (userChoice === "rock" && computerChoice === "scissors") ||
+          (userChoice === "paper" && computerChoice === "rock") ||
+          (userChoice === "scissors" && computerChoice === "paper")
+        ) {
+          userScore++;
+          userScoreSpan.textContent = userScore;
+          return "You win!";
+        } else {
+          computerScore++;
+          computerScoreSpan.textContent = computerScore;
+          return "You Lose!";
+        }
+      }
+
+      function displayResult(result, userChoice, computerChoice) {
+        const computerChoiceElement =
+          document.querySelector(".computer .output");
+        computerChoiceElement.textContent = computerChoice;
+
+        resultDiv.textContent = `${result}`;
+
+        resultDiv.classList.remove("win", "lose", "draw");
+
+        // Tambahkan kelas CSS berdasarkan hasil
+        if (result === "You win!") {
+          resultDiv.classList.add("win");
+        } else if (result === "You Lose!") {
+          resultDiv.classList.add("lose");
+        } else {
+          resultDiv.classList.add("draw");
+        }
+      }
+      function updateUserChoiceDisplay(userChoice) {
+        const inputElement = document.querySelector(".human .input");
+        inputElement.textContent = userChoice;
+      }
     </script>
   </body>
 </html>
