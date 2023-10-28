@@ -11,10 +11,11 @@ body {
   font-family: "Quicksand", sans-serif;
   margin: 0;
   padding: 0;
+  background-color: black;
 }
 .game {
-  background-color: #f1f1f1;
-  border: 2px solid #333;
+  background-color: #232323;
+  border: 2px solid white;
   padding: 23px;
   text-align: center;
   width: 500px;
@@ -24,18 +25,21 @@ body {
 }
 
 h3 {
-  background-color: #333;
-  color: white;
+  background-color: #F9B572;
+  color: #232323;
   padding: 10px;
   margin: 0;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   text-align: center;
+  border: 1px solid #232323;
 }
+
 #header {
   text-align: center;
-  margin-top: 4rem;
-  margin-bottom: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #F0F6F0;
 }
 
 .humanvscomp {
@@ -45,9 +49,9 @@ h3 {
 
 .human,
 .computer {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 10px;
+  background-color: #F9B572;
+  border: 1px solid #232323;
+  padding:10px;
   border-radius: 5px;
   width: 50%;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -58,33 +62,73 @@ h3 {
   font-weight: bold;
 }
 
-.result p {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px;
-  margin: 10px 0;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+.human span,
+.human p,
+.computer span,
+.computer p {
+  font-size: 23px;
 }
-.result p {
-  background-color: red;
+
+#result {
+  background-color: #F9B572;
   color: white;
   padding: 10px;
   margin: 10px 0;
+  font-size: 20px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  border: 1px solid #232323;
+
+}
+
+#result.win {
+  background-color: rgb(91, 214, 91);
+}
+
+#result.lose {
+  background-color: red;
+}
+
+#result.draw {
+  background-color: grey;
 }
 
 .all-button button {
-  background-color: #333;
-  color: white;
-  padding: 10px 20px;
-  font-size: 15px;
-  margin: 7px;
+  background-color: #99B080;
+  color: #232323;
+  padding: 15px ;
+  font-size: 18px;
+  margin: 5px;
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   cursor: pointer;
+  border: 2px solid white;
+
 }
 .all-button button:hover {
   background-color: #555;
+}
+
+/* Responsive HP */
+@media (max-width: 767px) {
+  #header {
+    margin-top: 10vw;
+    margin-bottom: 8vw;
+    font-size: 8vw;
+  }
+  .game {
+    width: 92%;
+  }
+}
+
+/* Responsive tablet */
+@media (min-width: 768px) and (max-width: 1024px) {
+  #header {
+    margin-top: 10vw;
+    margin-bottom: 5vw;
+    font-size: 8vw;
+  }
+  .game {
+    width: 80%;
+  }
 }
